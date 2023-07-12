@@ -1,38 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #041B15;
   color: white;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+body,
+html {
+  cursor: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.main-title {
+  text-transform: uppercase;
+  font-size: 15em;
+  letter-spacing: 10px;
+  margin-top: 10px;
+  text-align: left;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  /* Align to the left side of the page */
+  margin-left: 20px;
+  /* Add left margin to adjust distance from the left edge */
+}
+
+.email {
+  font-family: 'Cormorant', sans-serif;
+  margin-top: 10px;
+  font-size: 10em;
+  font-style: italic;
+  font-weight: lighter;
+  animation: scroll 10s linear infinite;
+  cursor: pointer;
+  /* Adjust the duration as needed */
+  text-align: left;
+  margin-left: 20px;
+  white-space: nowrap;
+  transition: background 0.4s ease-in-out;
+  /* Prevent text from breaking into a new line */
+  position: relative;
+  /* Relative position for the pseudo element */
+}
+
+.email::after {
+  content: " hello@auxlang.io";
+  /* One copy of the email text */
+  position: absolute;
+  /* Position the content right next to the original text */
+  left: 100%;
+  /* Place it to the right of the original text */
+  white-space: nowrap;
+  /* Prevent text from breaking into a new line */
+}
+
+.email:hover::after {
+  background: linear-gradient(45deg, #97DE44, #39D140, #20AB8E);
+  transition: background 0.4s ease-in-out;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
-  to {
+
+  100% {
+    transform: translateX(-100%);
+    /* Scroll 100% of the width to show 2 texts */
+  }
+}
+
+.email:hover {
+  background: linear-gradient(45deg, #97DE44, #39D140, #20AB8E);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* For Safari */
+}
+
+.circle {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  height: 300px;
+  width: 300px;
+  background: linear-gradient(45deg, #97DE44, #39D140, #20AB8E);
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  /* Transition effect for scaling */
+}
+
+.circle:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  /* Grow the circle 10% larger on hover */
+}
+
+.rotating-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.4em;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  margin-right: 3px;
+  /* Add margin to each letter */
+}
+
+.rotating-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
     transform: rotate(360deg);
   }
+}
+
+.music-note {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 7em;
+  color: white;
+  transform: translate(-50%, -50%);
+}
+
+.about {
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+  font-weight: 400;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  transform: rotate(270deg);
+  transform-origin: left bottom;
+  cursor: pointer;
+  font-size: 2em;
+  transition: background 0.2s ease-in-out;
+}
+
+.about:hover {
+  background: linear-gradient(45deg, #97DE44, #39D140, #20AB8E);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.footer-popup {
+  position: absolute;
+  font-size: 2.5em;
+  font-family: 'Syne', sans-serif;
+  text-align: left;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(45deg, #97DE44, #39D140, #20AB8E);
+  padding: 60px;
+  display: none;
+}
+
+.footer-popup.active {
+  display: block;
+}
+
+.footer-popup b {
+  font-weight: bold;
+}
+
+.close-popup {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
+
+.custom-cursor {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background: linear-gradient(45deg, #97DE44, #39D140, #20AB8E);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  z-index: 9999;
+}
+
+.hover-effect {
+  transform: translate(-50%, -50%) scale(1.35);
+  opacity: 0.7;
+}
+
+.circle:hover+.custom-cursor {
+  cursor: pointer;
+}
+
+.hover-scale {
+  cursor: none;
 }
